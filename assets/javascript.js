@@ -1,4 +1,4 @@
-var topics = ["Superheros", "Cars", "Houses", "Ghosts", "Cartoons",
+var topics = ["Superheros", "Cars", "Dogs", "Ghosts", "Cartoons",
 "Movies", "Birds"];
 var numberOfGIFs = 10;
 var cutOffRating = "PG";
