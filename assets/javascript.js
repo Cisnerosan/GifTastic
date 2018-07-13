@@ -19,7 +19,6 @@ function renderButtons(){
 		$("#gif-container").removeClass("solid-border");
 		populateGIFContainer($(this).text());
 	});
-
 }
 
 function addButton(show){
