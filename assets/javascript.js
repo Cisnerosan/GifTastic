@@ -5,6 +5,7 @@ $("document").ready(function(){
 
 // http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5 
 
+
 var topicsDiv= $("#topics");
 var topics= ["dogs", "cats", "birds","snakes","cars","cartoons","superheroes"];
 
@@ -13,6 +14,8 @@ for (var i=0; i< topics.length; i++){
     var button=$("<button class='m-2'>"+topics[i]+"</button>");
     console.log(button);
     topicsDiv.append(button);
+    console.log(topics+"batman");
+    
 
 }
 
