@@ -1,41 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-
-	<title>Document</title>
-	<script
-src="https://code.jquery.com/jquery-3.3.1.min.js"
-integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-crossorigin="anonymous"></script>
-  
-</head>
-<body> 
-    <div id="topics"></div>
-    <div id="gifs">
-
-        <form id="topic-form">
-            <label for="topic-input">Enter your topic</label>
-            <input type="text" id "topic-input"><br>
-
-            <!-- add button triggers -->
-             <input id="enter-topic" type="submit" value="Enter your topic">
-        </form>
-
-    </div>
-    
-    <script src="./assets/javascript.js"></script>
-</body>
-</html>
-
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+<html lang="en-us">
+	<head>
+		<meta charset="UTF-8">
+		<title>Cartoon GIF Generator</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/javascript.js"></script>
+	</head>
+	<body>
+		<div class = "row">
+			<h1>General Topics</h1>
+			<div id = "button-container" class = "solid-border">
+			</div>
+		</div>
+		<div class = "row">
+			<div id = "gif-container" class = "col-xs-8 comic-sans-font">
+			</div>
+			<div class = "col-xs-1">
+			</div>
+			<div class = "col-xs-3">
+				<form class="comic-sans-font">
+					Add buttons for any topic:<br>
+					<input type = "text" name = "topics" id = "topics" class="comic-sans-font">
+					<input type = "submit" value = "Submit" class = "btn" id = "submit">
+				</form>
+			</div>
+		</div>
+	</body>

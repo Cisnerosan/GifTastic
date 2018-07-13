@@ -1,33 +1,74 @@
-// when all html loads fire the Javascript****
+var topics = ["Superheros", "Cars", "Houses", "Ghosts", "Cartoons",
+"Movies", "Birds"];
+var numberOfGIFs = 10;
+var cutOffRating = "PG";
 
-$("document").ready(function(){
-// console.log('hello');
+function renderButtons(){
+	for(var i = 0; i < topics.length; i++) {
+		var newButton = $("<button>");
+		newButton.addClass("btn");
+		newButton.addClass("topics-button");
+		newButton.text(topics[i]);
+		$("#button-container").append(newButton);
+	}
+	$(".topics-button").unbind("click");
 
-// http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5 
-
-
-var topicsDiv= $("#topics");
-var topics= ["dogs", "cats", "birds","snakes","cars","cartoons","superheroes"];
-
-for (var i=0; i< topics.length; i++){
-    // console.log(topics[i]);
-    var button=$("<button class='m-2'>"+topics[i]+"</button>");
-    console.log(button);
-    topicsDiv.append(button);
-    console.log(topics+"batman");
-    
+	$(".topics-button").on("click", function(){
+		$(".gif-image").unbind("click");
+		$("#gif-container").empty();
+		$("#gif-container").removeClass("solid-border");
+		populateGIFContainer($(this).text());
+	});
 
 }
 
+function addButton(show){
+	if(topics.indexOf(show) === -1) {
+		topics.push(show);
+		$("#button-container").empty();
+		renderButtons();
+	}
+}
 
-$.ajax({
-    'type':"get",
-    url: "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=Fopyb8dYAz1FBAzfVqWQay25w8Jh1Bfj&limit=5"
-})
+function populateGIFContainer(show){
+	$.ajax({
+		url: "https://api.giphy.com/v1/gifs/search?q=" + show + 
+		"&api_key=Fopyb8dYAz1FBAzfVqWQay25w8Jh1Bfj&rating=" + cutOffRating + "&limit=" + numberOfGIFs,
+		method: "GET"
+	}).then(function(response){
+		response.data.forEach(function(element){
+			newDiv = $("<div>");
+			newDiv.addClass("individual-gif-container");
+			newDiv.append("<p>Rating: " + element.rating.toUpperCase() + "</p>");
+			var newImage = $("<img src = '" + element.images.fixed_height_still.url + "'>");
+			newImage.addClass("gif-image");
+			newImage.attr("state", "still");
+			newImage.attr("still-data", element.images.fixed_height_still.url);
+			newImage.attr("animated-data", element.images.fixed_height.url);
+			newDiv.append(newImage);
+			$("#gif-container").append(newDiv);
+		});
+		
+		$("#gif-container").addClass("dotted-border");
+		$(".gif-image").unbind("click");
+		$(".gif-image").on("click", function(){
+			if($(this).attr("state") === "still") {
+				$(this).attr("state", "animated");
+				$(this).attr("src", $(this).attr("animated-data"));
+			}
+			else {
+				$(this).attr("state", "still");
+				$(this).attr("src", $(this).attr("still-data"));
+			}
+		});
+	});
+}
 
-// callback function//console logging result///
-.done(function(result) {
-    console.log(result);
-    result.data
-  })
-})
+$(document).ready(function(){
+	renderButtons();
+	$("#submit").on("click", function(){
+		event.preventDefault();
+		addButton($("#topics").val().trim());
+		$("#topics").val("");
+	});
+});
